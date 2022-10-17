@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Today's Date</title>
+</head>
+
+<body>
+
+    <ul>
+        {% for user in users %}
+        <li ><a href="#">{{ user.id }}</a></li>
+        <li id="{{user.id}}">{{ user.name }}</a></li>
+        {% endfor %}
+    </ul>
+
+</body>
+
+<script>
+let aj = Array.from(document.getElementsByTagName("li"));
+    aj.forEach(element => {
+        element.addEventListener("click", (e) => {  
+        navigator.clipboard.writeText(element.innerHTML).then(
+            () => {
+                /* clipboard successfully set */
+                console.log("copied successfully");
+            },
+            () => {
+                /* clipboard write failed */
+                console.log("copied failed");
+            }
+        );
+    })
+    });
+
+
+
+</script>
+
+</html>
